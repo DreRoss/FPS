@@ -1,7 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
-#include "FPS/Public/FPSGameMode.h"
-#include "FPS/Public/FPSCharacter.h"
+#include "FPSGameMode.h"
+#include "FPSCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AFPSGameMode::AFPSGameMode()
