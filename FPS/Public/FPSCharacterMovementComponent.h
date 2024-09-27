@@ -2,6 +2,7 @@
 
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Coreminimal.h"
+#include "../../../Plugins/Developer/RiderLink/Source/RD/thirdparty/clsocket/src/ActiveSocket.h"
 #include "FPSCharacterMovementComponent.generated.h"
 
 
@@ -21,6 +22,15 @@ class FPS_API UFPSCharacterMovementComponent : public UCharacterMovementComponen
 		virtual uint8 GetCompressedFlags() const override;
 		virtual void SetMoveFor(ACharacter* C, float InDeltaTime, FVector const& NewAccel, class FNetworkPredictionData_Client_Character& ClientData) override;
 		virtual void PrepMoveFor(ACharacter* C) override;
+	};
+
+	class FNetworkPredictionData_Client_FPS : public FNetworkPredictionData_Client_Character
+	{
+		FNetworkPredictionData_Client_FPS(const UFPSCharacterMovementComponent& ClientMovement);
+
+		typedef FNetworkPredictionData_Client_Character Super;
+
+		virtual FSavedMovePtr AllocateNewMove() override;
 	};
 
 	bool Safe_bWantsToSprint;
