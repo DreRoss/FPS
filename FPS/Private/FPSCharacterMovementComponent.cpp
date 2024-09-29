@@ -48,3 +48,13 @@ void UFPSCharacterMovementComponent::FSavedMove_FPS::PrepMoveFor(ACharacter* C)
 
 	CharacterMovement->Safe_bWantsToSprint = Saved_bWantsToSprint;
 }
+
+UFPSCharacterMovementComponent::FNetworkPredictionData_Client_FPS::FNetworkPredictionData_Client_FPS(
+	const UFPSCharacterMovementComponent& ClientMovement) : Super(ClientMovement)
+{
+}
+
+FSavedMovePtr UFPSCharacterMovementComponent::FNetworkPredictionData_Client_FPS::AllocateNewMove()
+{
+	return  FSavedMovePtr(new FSavedMove_FPS());
+}
