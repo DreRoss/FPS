@@ -37,9 +37,12 @@ class FPS_API UFPSCharacterMovementComponent : public UCharacterMovementComponen
 
 	bool Safe_bWantsToSprint;
 	
-	public:
+public:
 
 	virtual FNetworkPredictionData_Client* GetPredictionData_Client() const override;
+
+protected:
+	virtual void UpdateFromCompressedFlags(uint8 Flags) override;
 
 	UFPSCharacterMovementComponent();
 };

@@ -72,3 +72,10 @@ FNetworkPredictionData_Client* UFPSCharacterMovementComponent::GetPredictionData
 	}
 	return ClientPredictionData;
 }
+
+void UFPSCharacterMovementComponent::UpdateFromCompressedFlags(uint8 Flags)
+{
+	Super::UpdateFromCompressedFlags(Flags);
+
+	Safe_bWantsToSprint = (Flags & FSavedMove_Character::FLAG_Custom_0 != 0);
+}
