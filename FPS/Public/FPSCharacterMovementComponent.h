@@ -35,6 +35,10 @@ class FPS_API UFPSCharacterMovementComponent : public UCharacterMovementComponen
 		virtual FSavedMovePtr AllocateNewMove() override;
 	};
 
+	UPROPERTY(EditDefaultsOnly) float Sprint_MaxWalkSpeed;
+	UPROPERTY(EditDefaultsOnly) float Walk_MaxWalkSpeed;
+
+
 	bool Safe_bWantsToSprint;
 	
 public:
@@ -44,5 +48,11 @@ public:
 protected:
 	virtual void UpdateFromCompressedFlags(uint8 Flags) override;
 
+public:
+
 	UFPSCharacterMovementComponent();
+
+	UFUNCTION(BlueprintCallable) void SprintPressed();
+	UFUNCTION(BlueprintCallable) void SprintRelease();
+
 };

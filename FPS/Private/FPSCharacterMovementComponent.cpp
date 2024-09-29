@@ -79,3 +79,11 @@ void UFPSCharacterMovementComponent::UpdateFromCompressedFlags(uint8 Flags)
 
 	Safe_bWantsToSprint = (Flags & FSavedMove_Character::FLAG_Custom_0 != 0);
 }
+
+void UFPSCharacterMovementComponent::SprintPressed()
+{
+}
+
+void UFPSCharacterMovementComponent::SprintRelease()
+{
+}
