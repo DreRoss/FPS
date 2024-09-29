@@ -58,3 +58,17 @@ FSavedMovePtr UFPSCharacterMovementComponent::FNetworkPredictionData_Client_FPS:
 {
 	return  FSavedMovePtr(new FSavedMove_FPS());
 }
+
+FNetworkPredictionData_Client* UFPSCharacterMovementComponent::GetPredictionData_Client() const
+{
+	check(PawnOwner != nullptr)
+
+	if(ClientPredictionData == nullptr)
+	{
+		UFPSCharacterMovementComponent* MutableThis = const_cast<UFPSCharacterMovementComponent*>(this);
+		MutableThis->ClientPredictionData = new FNetworkPredictionData_Client_FPS(*this);
+		MutableThis->ClientPredictionData->MaxSmoothNetUpdateDist = 92.f;
+		MutableThis->ClientPredictionData->NoSmoothNetUpdateDist = 140.f;
+	}
+	return ClientPredictionData;
+}

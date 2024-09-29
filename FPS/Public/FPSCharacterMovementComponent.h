@@ -24,8 +24,10 @@ class FPS_API UFPSCharacterMovementComponent : public UCharacterMovementComponen
 		virtual void PrepMoveFor(ACharacter* C) override;
 	};
 
+
 	class FNetworkPredictionData_Client_FPS : public FNetworkPredictionData_Client_Character
 	{
+	public:
 		FNetworkPredictionData_Client_FPS(const UFPSCharacterMovementComponent& ClientMovement);
 
 		typedef FNetworkPredictionData_Client_Character Super;
@@ -36,6 +38,8 @@ class FPS_API UFPSCharacterMovementComponent : public UCharacterMovementComponen
 	bool Safe_bWantsToSprint;
 	
 	public:
+
+	virtual FNetworkPredictionData_Client* GetPredictionData_Client() const override;
 
 	UFPSCharacterMovementComponent();
 };
