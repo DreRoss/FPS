@@ -20,6 +20,11 @@ UCLASS(config=Game)
 class AFPSCharacter : public ACharacter
 {
 	GENERATED_BODY()
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category=Movement) class UFPSCharacterMovementComponent* FPSCharacterMovementComponent;
+	
+	
+private:
 
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Mesh, meta = (AllowPrivateAccess = "true"))
@@ -38,7 +43,7 @@ class AFPSCharacter : public ACharacter
 	UInputAction* MoveAction;
 	
 public:
-	AFPSCharacter();
+	AFPSCharacter(const FObjectInitializer& ObjectInitializer);
 
 protected:
 	virtual void BeginPlay();

@@ -77,7 +77,7 @@ void UFPSCharacterMovementComponent::UpdateFromCompressedFlags(uint8 Flags)
 {
 	Super::UpdateFromCompressedFlags(Flags);
 
-	Safe_bWantsToSprint = (Flags & FSavedMove_Character::FLAG_Custom_0 != 0);
+	Safe_bWantsToSprint = (Flags & FSavedMove_Character::FLAG_Custom_0) != 0;
 }
 
 void UFPSCharacterMovementComponent::OnMovementUpdated(float DeltaSeconds, const FVector& OldLocation,
@@ -97,6 +97,13 @@ void UFPSCharacterMovementComponent::OnMovementUpdated(float DeltaSeconds, const
 		}
 	}
 	
+}
+
+UFPSCharacterMovementComponent::UFPSCharacterMovementComponent()
+{
+	Sprint_MaxWalkSpeed = 100;
+	Walk_MaxWalkSpeed = 100;
+	Safe_bWantsToSprint = false;
 }
 
 void UFPSCharacterMovementComponent::SprintPressed()
