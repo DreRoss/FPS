@@ -108,8 +108,10 @@ UFPSCharacterMovementComponent::UFPSCharacterMovementComponent()
 
 void UFPSCharacterMovementComponent::SprintPressed()
 {
+	Safe_bWantsToSprint = true;
 }
 
 void UFPSCharacterMovementComponent::SprintRelease()
 {
+	Safe_bWantsToSprint = false;
 }
