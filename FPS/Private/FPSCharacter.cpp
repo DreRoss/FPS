@@ -8,6 +8,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "FPSCharacterMovementComponent.h"
 #include "InputActionValue.h"
 #include "Engine/LocalPlayer.h"
 
@@ -16,8 +17,12 @@ DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 //////////////////////////////////////////////////////////////////////////
 // AFPSCharacter
 
-AFPSCharacter::AFPSCharacter()
+AFPSCharacter::AFPSCharacter(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer.SetDefaultSubobjectClass<UFPSCharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
 {
+
+	FPSCharacterMovementComponent = Cast<UFPSCharacterMovementComponent>(GetCharacterMovement());
+		
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
 		
